@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-md bg-light sticky-top border-bottom py-2">
+  <div class="container-fluid">
+
+    <!-- LOGO -->
+    <a class="navbar-brand fs-3" href="/listings">
+      <i class="fa-solid fa-compass"></i>
+    </a>
+
+    <!-- HAMBURGER BUTTON -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- COLLAPSIBLE MENU -->
+    <div class="collapse navbar-collapse" id="navMenu">
+
+      <!-- LEFT SIDE LINKS -->
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings">Explore</a>
+        </li>
+      </ul>
+
+      <!-- SEARCH BAR - RESPONSIVE -->
+      <form class="d-flex w-50 w-md-auto my-2 my-md-0" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search listings..."
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <!-- RIGHT SIDE BUTTONS -->
+      <div class="d-flex align-items-center gap-2 ms-md-3 mt-3 mt-md-0">
+        <a class="nav-link" href="/listings/create">Airbnb your home</a>
+
+        <% if (!currUser) { %>
+
+          <a href="/signup" class="btn btn-success rounded-pill px-3 py-1">
+            Signup
+          </a>
+
+          <a href="/login" class="btn btn-outline-success rounded-pill px-3 py-1">
+            Login
+          </a>
+
+        <% } else { %>
+
+          <a href="/logout" class="btn btn-danger rounded-pill px-3 py-1">
+            Logout
+          </a>
+
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</nav>

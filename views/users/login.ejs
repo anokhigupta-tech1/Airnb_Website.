@@ -1,0 +1,54 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row mt-5 d-flex justify-content-center">
+  <div class="col-md-6 col-lg-4">
+
+    <div class="card shadow-lg border-0 rounded-4">
+      <div class="card-body p-4">
+
+        <h2 class="text-center mb-4 text-success fw-bold">
+          Login to Wanderlust
+        </h2>
+
+        <form action="/login" method="post" class="needs-validation" novalidate>
+
+          <!-- Username -->
+          <div class="mb-3">
+            <label for="username" class="form-label fw-semibold">
+              <i class="fa-solid fa-user"></i> Username
+            </label>
+            <input 
+              type="text" 
+              class="form-control rounded-3" 
+              id="username" 
+              name="username" 
+              required>
+            <div class="invalid-feedback">Please enter your username.</div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label fw-semibold">
+              <i class="fa-solid fa-lock"></i> Password
+            </label>
+            <input 
+              type="password" 
+              class="form-control rounded-3" 
+              id="password" 
+              name="password" 
+              required>
+            <div class="invalid-feedback">Please enter your password.</div>
+          </div>
+
+          <!-- Login Button -->
+          <button class="btn btn-success w-100 rounded-pill mt-2 fw-semibold">
+            Login
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

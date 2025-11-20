@@ -1,0 +1,173 @@
+<% layout("layouts/boilerPlate") -%>
+
+<style>
+  .filter {
+    text-align: center;
+    opacity: 0.7;
+    transition: 0.2s;
+  }
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+.tax-info{
+  display: none;
+}
+  /* Make filters scrollable on extra small screens */
+  #filters-row {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+  }
+
+  #filters-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-box {
+    display: inline-block;
+    width: 80px;
+    margin-right: 1rem;
+  }
+</style>
+
+<body>
+<div class="container mt-4">
+
+  <!-- -------------------------------- -->
+  <!--           FILTER SECTION          -->
+  <!-- -------------------------------- -->
+
+  <div id="filters-row" class="d-flex flex-nowrap">
+
+    <div class="filter-box">
+      <div class="filter">
+        <i class="fa-solid fa-fire fa-lg"></i>
+        <p>Trending</p>
+      </div>
+    </div>
+
+    <div class="filter-box">
+      <div class="filter">
+        <i class="fa-solid fa-mountain-city fa-lg"></i>
+        <p>Cities</p>
+      </div>
+    </div>
+
+    <div class="filter-box">
+      <div class="filter">
+        <i class="fa-solid fa-mountain fa-lg"></i>
+        <p>Mountain</p>
+      </div>
+    </div>
+
+    <div class="filter-box">
+      <div class="filter">
+        <i class="fa-solid fa-bed fa-lg"></i>
+        <p>Rooms</p>
+      </div>
+    </div>
+
+    <div class="filter-box">
+      <div class="filter">
+        <i class="fa-solid fa-fort-awesome fa-lg"></i>
+        <p>Castles</p>
+      </div>
+    </div>
+
+    <div class="filter-box">
+      <div class="filter">
+        <i class="fa-solid fa-person-swimming fa-lg"></i>
+        <p>Pools</p>
+      </div>
+    </div>
+
+    <div class="filter-box">
+      <div class="filter">
+        <i class="fa-solid fa-campground fa-lg"></i>
+        <p>Camping</p>
+      </div>
+    </div>
+
+    <div class="filter-box">
+      <div class="filter">
+        <i class="fa-solid fa-cow fa-lg"></i>
+        <p>Farms</p>
+      </div>
+    </div>
+
+    <div class="filter-box">
+      <div class="filter">
+        <i class="fa-solid fa-snowflake fa-lg"></i>
+        <p>Arctic</p>
+      </div>
+    </div>
+
+    <!-- TAX TOGGLE -->
+    <div class="filter-box" style="width:110px;">
+      <div class="form-check form-switch mt-2">
+        <input class="form-check-input" type="checkbox" id="switchCheckDefault">
+        <label class="form-check-label small" for="switchCheckDefault">Taxes</label>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- -------------------------------- -->
+  <!--         LISTING CARDS             -->
+  <!-- -------------------------------- -->
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-3">
+
+    <% for (let listing of allListings) { %>
+      <div class="col">
+        <div class="card shadow-sm h-100">
+          
+          <a href="/listings/<%= listing._id %>">
+            <img src="<%= listing.image.url %>"
+                 class="card-img-top"
+                 alt="listing_image"
+                 style="height: 16rem; object-fit: cover;">
+          </a>
+
+          <div class="card-body">
+            <h6>
+              <a href="/listings/<%= listing._id %>" class="text-dark text-decoration-none">
+                <b><%= listing.title %></b>
+              </a>
+            </h6>
+            <p class="text-muted small"><%= listing.description %></p>
+            <p class="fw-bold">&#8377; <%= listing.price.toLocaleString('en-IN') %></p>
+            <i class="tax-info">&nbsp; &nbsp; +18%GST</i>
+          </div>
+
+        </div>
+      </div>
+    <% } %>
+
+  </div>
+
+</div>
+
+<script>
+  document.getElementById("switchCheckDefault").addEventListener("click", () => {
+    console.log("Toggle tax switch");
+    let taxinfo=document.getElementsByClassName("tax-info");
+    for(let info of taxinfo){
+      if(info.style.display!="inline"){
+        info.style.display="inline";
+      }
+      else{
+        info.style.display="none"
+      }
+    }
+  });
+</script>
+
+</body>

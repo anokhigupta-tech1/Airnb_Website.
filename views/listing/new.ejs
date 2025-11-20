@@ -1,0 +1,77 @@
+<% layout("layouts/boilerPlate") -%>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4 text-center">Create a New Listing</h2>
+
+    <!-- Form Start -->
+    <form action="/listings" method="POST" class="p-4 border rounded shadow-sm bg-light needs-validation" enctype="multipart/form-data" novalidate >
+      
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" class="form-control" id="title" name="listing[title]" required>
+        <div class="invalid-feedback">Please enter a title.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea id="description" name="listing[description]" class="form-control" rows="4" required></textarea>
+        <div class="invalid-feedback">Please enter a description.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price (₹):</label>
+        <input type="number" class="form-control" id="price" name="listing[price]" min="1" required>
+        <div class="invalid-feedback">Please enter a valid price.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input type="text" class="form-control" id="location" name="listing[location]" required>
+        <div class="invalid-feedback">Please provide a location.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="country" class="form-label">Country:</label>
+        <input type="text" class="form-control" id="country" name="listing[country]" required>
+        <div class="invalid-feedback">Please enter a country.</div>
+      </div>
+
+      <!-- <div class="mb-3">
+        <label for="image.filename" class="form-label">Image Filename:</label>
+        <input type="text" class="form-control" id="image.filename" name="listing[image][filename]" value="listingimage" required>
+        <div class="invalid-feedback">Please enter an image filename.</div>
+      </div> -->
+
+      <div class="mb-3">
+        <label for="image.url" class="form-label">Upload Image </label>
+        <input type="file" class="form-control" id="image.url" name="listing[image]" required>
+         <!-- <input type="file" class="form-control" name="image" required> -->
+
+        <div class="invalid-feedback">Please enter a valid image URL.</div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary px-4">Create Listing</button>
+      </div>
+    </form>
+    <!-- Form End -->
+  </div>
+
+  <!-- Bootstrap Form Validation Script -->
+  <script>
+    (() => {
+      'use strict'
+      const forms = document.querySelectorAll('.needs-validation')
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script>
+</body>
+</html>
